@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect } from "react";
+import { render } from "solid-js/web";
+
+import {
+  SolidComponent,
+  solidComponentProps,
+  solidComponentState,
+} from "./SolidComponent";
 
 function App() {
+  // Mount component/widget
+  useEffect(() => {
+    const el = document.getElementById("solid");
+
+    return render(SolidComponent, el);
+  }, []);
+
+  const onClick = () => solidComponentState.setCount((c) => c + 1);
+
+  const onSolidClick = (str) => console.log(str);
+
+  solidComponentProps.onClick = onSolidClick;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>
+        update solid component: <button onClick={onClick}>click</button>
+      </p>
+      <div id="solid"></div>
     </div>
   );
 }
