@@ -8,10 +8,10 @@ export const SolidComponent = () => {
     <h1>Solid component</h1>
     <div class="block">
       <div>
-        React counter: ${solidComponentDataProps.dataProp}<br />
+        React counter: ${solidComponentProps.dataProp}<br />
         Solid counter: ${count}
       </div>
-      <button onClick=${solidComponentCallbackProps.onClickHandler}>
+      <button onClick=${solidComponentProps.onClickHandler()}>
         update react component
       </button>
       <button onClick=${() => setCount((c) => c + 1)}>
@@ -30,12 +30,9 @@ export const solidComponentState = createRoot(() => {
   };
 });
 
-export const solidComponentDataProps = createRoot(() => {
+export const solidComponentProps = createRoot(() => {
   const [dataProp, setDataProp] = createSignal(undefined);
+  const [onClickHandler, setOnClickHandler] = createSignal(undefined);
 
-  return { dataProp, setDataProp };
+  return { dataProp, setDataProp, onClickHandler, setOnClickHandler };
 });
-
-export const solidComponentCallbackProps = {
-  onClickHandler: undefined,
-};

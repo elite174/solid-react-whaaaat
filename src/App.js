@@ -4,8 +4,7 @@ import { render } from "solid-js/web";
 
 import {
   SolidComponent,
-  solidComponentCallbackProps,
-  solidComponentDataProps,
+  solidComponentProps,
   solidComponentState,
 } from "./SolidComponent";
 
@@ -21,8 +20,8 @@ function App() {
 
   const updateReactCounter = () => setReactCounter((c) => c + 1);
 
-  solidComponentCallbackProps.onClickHandler = updateReactCounter;
-  solidComponentDataProps.setDataProp(reactCounter);
+  solidComponentProps.setOnClickHandler((_prevFunc) => updateReactCounter);
+  solidComponentProps.setDataProp(reactCounter);
 
   return (
     <div className="App">
