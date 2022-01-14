@@ -7,6 +7,7 @@ import {
   solidComponentProps,
   solidComponentState,
 } from "./SolidComponent";
+import { WrapperExample } from "./WrapperExample";
 
 function App() {
   const [reactCounter, setReactCounter] = useState(0);
@@ -39,6 +40,8 @@ function App() {
         </div>
       </div>
       <div id="solid"></div>
+
+      <WrapperExample />
     </div>
   );
 }
